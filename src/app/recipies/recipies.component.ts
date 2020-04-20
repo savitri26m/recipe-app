@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipiesComponent implements OnInit {
 
+  // recipe: Recipe[]
+
   constructor() { }
 
   ngOnInit(): void {
