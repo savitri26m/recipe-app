@@ -1,8 +1,23 @@
 <div class="row">
     <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
+        <!-- $event refers to data we pass through the event -->
+        <!-- <app-recipe-list (recipeWasSelected)="selectedRecipe = $event" ></app-recipe-list> -->
+
+        <!-- transfering the recipe selected from recipe-list component -->
+        <app-recipe-list (recipeWasSelected)="recipeElSelected($event)" ></app-recipe-list>
+
     </div>
     <div class="col-md-7">
-        <app-recipe-details></app-recipe-details>
+        <!-- <app-recipe-details *ngIf="selectedRecipe; else infoText" [recipeItemSelected]="selectedRecipe" ></app-recipe-details>
+        <ng-template #infoText>
+            <p>Please select a recipe !!</p>
+        </ng-template> -->
+
+
+        <!-- binding the input property to pass the selected recipe-item into recipe-details component  -->
+        <app-recipe-details *ngIf="recipeSelected; else infoText" [recipeItemSelected]="recipeSelected"></app-recipe-details>
+        <ng-template #infoText>
+            <p>Please select a recipe !!</p>
+        </ng-template>
     </div>
 </div>

@@ -1,32 +1,42 @@
-<div class="row">
-    <div class="col-md-12">
-        <img src="" alt="" class="image-responsive" >
+
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <img [src]="recipeItemSelected.imagePath" alt="{{recipeItemSelected.name}}" class="image-responsive" >
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{recipeItemSelected.name}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" role="button">
+                Manage <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">To Shopping Cart</a></li>
+                <li><a href="#">Edit Recipe</a></li>
+                <li><a href="#">Delete Recipe</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{recipeItemSelected.description}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            Ingridients
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <h2>Recipe Name</h2>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <button href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" role="button">
-            Manage <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="#">To Shopping Cart</a></li>
-            <li><a href="#">Edit Recipe</a></li>
-            <li><a href="#">Delete Recipe</a></li>
-        </ul>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        Description
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        Ingridients
-    </div>
-</div>
+
+
+<!-- <ng-template #infoText>
+    <p>Select recipe</p>
+</ng-template> -->
