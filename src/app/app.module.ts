@@ -25,7 +25,7 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
