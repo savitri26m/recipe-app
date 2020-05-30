@@ -5,17 +5,20 @@
 
     </div>
     <div class="col-md-7">
-        <!-- binding the input property to pass the selected recipe-item into recipe-details component  -->
-        <app-recipe-details *ngIf="recipeSelected; else infoText" [recipeItemSelected]="recipeSelected"></app-recipe-details>
-        <ng-template #infoText>
-            <p>Please select a recipe !!</p>
-        </ng-template>
+        <router-outlet></router-outlet>
     </div>
 </div>
 
 
 <!-- Alternative solution -->
 
+<!-- <div class="col-md-7">
+     binding the input property to pass the selected recipe-item into recipe-details component  -->
+    <!-- <app-recipe-details *ngIf="recipeSelected; else infoText" [recipeItemSelected]="recipeSelected"></app-recipe-details>
+    <ng-template #infoText>
+        <p>Please select a recipe !!</p>
+    </ng-template>
+</div> -->
 
 <!-- <div class="row">
     <div class="col-md-5"> -->
