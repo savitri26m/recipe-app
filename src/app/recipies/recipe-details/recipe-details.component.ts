@@ -32,4 +32,10 @@ export class RecipeDetailsComponent implements OnInit {
     this.router.navigate(['/shopping-list']);
   }
 
+  editRecipe(){
+    this.router.navigate(['edit'], {relativeTo: this.route});
+    // alternate methods, which is complex route
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route})
+  }
+
 }
