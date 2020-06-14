@@ -9,6 +9,8 @@ import { Subject } from 'rxjs';
 export class ShoppingListService {
 
   ingridientsChanged = new Subject<Ingridient[]>();
+
+  // updating the index of selected item from shopping-list.component and passing it to shopping-edit
   shoppingEditing = new Subject<number>();
 
   private ingridients: Ingridient[] = [

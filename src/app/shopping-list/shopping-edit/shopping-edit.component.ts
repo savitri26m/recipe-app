@@ -13,20 +13,22 @@ import { Subscription } from 'rxjs';
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   editMode = false; // if we are editing shoppingList items
-  editedItemIndex: number;
+  editedItemIndex: number; 
   editedIngridientItem: Ingridient;
   @ViewChild('f', {static: false}) slForm: NgForm;
 
   constructor(private shoppingList: ShoppingListService) { }
 
   ngOnInit(): void {
+    // listining to the shoppingEditing who hold the current index of selected Ingridient from shopping-list
     this.subscription = this.shoppingList.shoppingEditing.subscribe(
       (index: number) => {
         this.editedItemIndex = index;
         this.editMode = true;
+        // getting the selected ingridient, by passing newly recieved index
         this.editedIngridientItem = this.shoppingList.getIngridient(index);
 
-        // updating values from selected items in form
+        // updating values from selected items in form, populating the values in the form
         this.slForm.setValue({
           name: this.editedIngridientItem.name,
           amount: this.editedIngridientItem.amount
@@ -35,6 +37,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     )
   }
 
+  // Adding and updating new item or exisitng item 
   submitIngridient(form: NgForm) {
     const value = form.value
     const newIngridient = new Ingridient(value.name, value.amount);
