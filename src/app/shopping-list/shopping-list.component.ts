@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ingridient } from '../shared/ingridient.model';
 import { ShoppingListService } from '../services/shopping-list.service';
 import { Subscription } from 'rxjs';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-shopping-list',
@@ -22,6 +23,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
         this.ingridients = data;
       }
     )
+  }
+
+  // The subject next method is used to send messages to an observable which are then sent to all angular components that are subscribers (a.k.a. observers) of that observable.
+
+  onEditItem(index: number){
+    this.shoppingList.shoppingEditing.next(index);
   }
 
   ngOnDestroy(): void {

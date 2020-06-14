@@ -1,21 +1,28 @@
 <div class="row">
     <div class="col-xs-12">
-        <form>
+        <form #f="ngForm" (ngSubmit)="submitIngridient(f)">
             <div class="row">
                 <div class="col-sm-5 form-group" >
                     <label for="name" >Name</label>
-                    <input type="text" class="form-control" #nameInput >
+                    <input type="text" id="name" required
+                     class="form-control" name="name" ngModel >
                 </div>
-                <div class="col-sm-2 form-group" >
+                <!-- adding pattern validation to enter amount in positive numbers only -->
+                <div class="col-sm-3 form-group" >
                     <label for="amount" >Amount</label>
-                    <input type="number" class="form-control" #amountInput >
+                    <input type="number" id="amount" 
+                        #amount="ngModel"
+                        required
+                        pattern="^[1-9]+[0-9]*$"
+                     class="form-control" name="amount" ngModel >
+                     <span *ngIf="amount.touched && amount.invalid && amount.errors.pattern" style="color: red;" >Number should be greater then 0 !</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-success" (click)="addIngridient()" >Add</button>
-                    <button class="btn btn-danger">Delete</button>
-                    <button class="btn btn-primary">Clear</button>
+                    <button class="btn btn-success" type="submit" [disabled]="f.invalid" >{{ editMode ? 'Update' : 'Add'}}</button>
+                    <button class="btn btn-danger" type="button" *ngIf="editMode" (click)="onDelete()" >Delete</button>
+                    <button class="btn btn-primary" type="button" (click) = "onClear()" >Clear</button>
                 </div>
             </div>
         </form>

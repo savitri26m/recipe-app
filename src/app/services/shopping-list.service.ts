@@ -9,10 +9,12 @@ import { Subject } from 'rxjs';
 export class ShoppingListService {
 
   ingridientsChanged = new Subject<Ingridient[]>();
+  shoppingEditing = new Subject<number>();
 
   private ingridients: Ingridient[] = [
     new Ingridient('Apples', 5),
-    {name: 'Tomatoes', amount: 10}
+    {name: 'Tomatoes', amount: 10},
+    {name: 'Eggs', amount: 10}
   ];
 
   constructor() { }
@@ -20,6 +22,12 @@ export class ShoppingListService {
   addIngridient(ingridient: Ingridient){
     this.ingridients.push(ingridient);
     this.ingridientsChanged.next(this.ingridients.slice()); // subject uses next() to emit the data
+  }
+
+
+  // returns ingridient we want to edit in shoppingList
+  getIngridient(i: number){
+    return this.ingridients[i];
   }
 
   // pushing array of ingridients received into ingridients list in Shopping List
@@ -35,5 +43,15 @@ export class ShoppingListService {
 
   getIngridients(){
     return this.ingridients.slice();
+  }
+
+  updateIngridient(index: number, newIngridient: Ingridient){
+    this.ingridients[index] = newIngridient;
+    this.ingridientsChanged.next(this.ingridients.slice());
+  }
+
+  deleteIngridient(index: number){
+    this.ingridients.splice(index, 1);
+    this.ingridientsChanged.next(this.ingridients.slice());
   }
 }
